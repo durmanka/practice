@@ -1,33 +1,36 @@
-def validate_brackets(code):
-    stack = []
-    opening = "([{"
-    closing = ")]}"
-    pairs = {")": "(", "]": "[", "}": "{"}
+website = {
+    "theme": "Продаж побутової техніки та електроніки",
+    "informational_queries": [
+        "як вибрати ноутбук",
+        "який смартфон купити",
+        "найкращі телевізори 2026"
+    ],
+    "navigational_queries": [
+        "COMFY",
+        "COMFY офіційний сайт",
+        "COMFY каталог товарів"
+    ],
+    "commercial_queries": [
+        "купити ноутбук",
+        "купити смартфон",
+        "телевізор ціна",
+        "холодильник COMFY"
+    ]
+}
 
-    for char in code:
-        if char in opening:
-            stack.append(char)
-        elif char in closing:
-            if len(stack) == 0:
-                return False
-            if stack[-1] != pairs[char]:
-                return False
-            stack.pop()
+print("СЕМАНТИЧНИЙ АНАЛІЗ ВЕБСАЙТУ COMFY")
+print("-" * 50)
 
-    return len(stack) == 0
+print(f"Основна тематика: {website['theme']}")
 
-tests = [
-    ("if (x > 0) { print([1, 2, 3]) }",    True),
-    ("func(a[0], b{1})",                    True),
-    ("(()())",                              True),
-    ("if (x > 0) { print([1, 2, 3] }",     False),
-    ("(((",                                 False),
-    (")))",                                 False),
-    ("([)]",                                False),
-]
+print("\nІнформаційні запити:")
+for query in website["informational_queries"]:
+    print(f"- {query}")
 
-for code, expected in tests:
-    result = validate_brackets(code)
-    status = "✓" if result == expected else "✗"
-    print(f"{status} '{code}'")
-    print(f"   результат: {result}\n")
+print("\nНавігаційні запити:")
+for query in website["navigational_queries"]:
+    print(f"- {query}")
+
+print("\nКомерційні запити:")
+for query in website["commercial_queries"]:
+    print(f"- {query}")

@@ -1,28 +1,24 @@
-def search_dictionary(dictionary, word):
-    left = 0
-    right = len(dictionary) - 1
+website = {
+    "name": "COMFY",
+    "domain": "comfy.ua",
+    "search_engine": "Google",
+    "indexed": True,
+    "pages": [
+        "https://comfy.ua/",
+        "https://comfy.ua/ua/smartfon.html",
+        "https://comfy.ua/ua/noutbuk.html",
+        "https://comfy.ua/ua/televizory.html",
+        "https://comfy.ua/ua/holodilniki.html"
+    ]
+}
 
-    while left <= right:
-        mid = (left + right) // 2
-        mid_word = dictionary[mid][0]
+print("АНАЛІЗ ІНДЕКСАЦІЇ ВЕБСАЙТУ")
+print("-" * 50)
+print(f"Назва сайту: {website['name']}")
+print(f"Домен: {website['domain']}")
+print(f"Пошукова система: {website['search_engine']}")
+print(f"Факт індексації: {'Так' if website['indexed'] else 'Ні'}")
 
-        if mid_word == word:
-            return dictionary[mid][1]
-        elif mid_word < word:
-            left = mid + 1
-        else:
-            right = mid - 1
-
-    return "Слово не знайдено"
-
-dictionary = [
-    ("алгоритм",   "послідовність інструкцій для вирішення задачі"),
-    ("масив",      "список елементів одного типу"),
-    ("рекурсія",   "виклик функцією самої себе"),
-    ("функція",    "блок коду з іменем"),
-    ("цикл",       "повторення блоку коду"),
-]
-
-print(search_dictionary(dictionary, "масив"))
-print(search_dictionary(dictionary, "цикл"))
-print(search_dictionary(dictionary, "хмара"))
+print("\nСторінки, знайдені у пошуковій видачі Google:")
+for i, page in enumerate(website["pages"], start=1):
+    print(f"{i}. {page}")

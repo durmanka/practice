@@ -1,31 +1,31 @@
-def find_product(products: list, target: str) -> int:
-    for i in range(len(products)):
-        if products[i] == target:
-            return i + 1
-    return -1
+site = {
+    "name": "COMFY",
+    "url": "https://comfy.ua",
+    "topic": "Online electronics and appliances store",
+    "type": "E-commerce",
+    "audience": [
+        "individuals",
+        "families",
+        "students",
+        "businesses"
+    ],
+    "purpose": "Online sales of electronics, appliances, gadgets and accessories",
+    "categories": [
+        "Smartphones",
+        "Laptops",
+        "Televisions",
+        "Home Appliances",
+        "Gaming",
+        "Audio",
+        "Smart Home",
+        "Accessories"
+    ]
+}
 
-products = [
-    "Ноутбук",
-    "Смартфон",
-    "Навушники",
-    "Клавіатура",
-    "Миша",
-    "Монітор",
-    "Веб-камера",
-    "Принтер"
-]
+print("Характеристика вебсайту COMFY")
+print("-" * 50)
 
-print("Товари в магазині:")
-for i in range(len(products)):
-    print(f"  {i + 1}. {products[i]}")
-
-print()
-
-search_queries = ["Миша", "Монітор", "Планшет", "Ноутбук"]
-
-for query in search_queries:
-    result = find_product(products, query)
-    if result != -1:
-        print(f'Пошук "{query}": знайдено на позиції {result}')
-    else:
-        print(f'Пошук "{query}": Товар не знайдено')
+for key, value in site.items():
+    if isinstance(value, list):
+        value = ", ".join(value)
+    print(f"{key:<12}: {value}")
